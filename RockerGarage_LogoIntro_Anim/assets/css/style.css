@@ -1,0 +1,41 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logo-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.logo {
+    width: 100px;
+    opacity: 0;
+    transform: rotateX(90deg);
+    box-shadow: 0 0 0px white;
+    transition: box-shadow 0.2s ease;
+}
+
+.slogan {
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.5em;
+    color: white;
+    opacity: 0;
+}
+
+.word {
+    opacity: 0.2;
+    margin: 0 10px;
+    transition: opacity 0.3s, text-shadow 0.3s;
+}
