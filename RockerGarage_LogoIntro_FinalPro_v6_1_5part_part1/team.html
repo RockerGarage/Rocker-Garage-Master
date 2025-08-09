@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rocker Garage — Team</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    body { color: #fff; }
+    .team-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:24px; max-width:1200px; margin:8vh auto; padding:0 24px; }
+    .card { background:#0a0a0a; border:1px solid #222; border-radius:14px; padding:18px; text-align:center; box-shadow:0 0 20px rgba(255,255,255,0.05); }
+    .card img { max-width:100%; height:auto; border-radius:10px; }
+    .name { font-size:1.2rem; margin-top:10px; letter-spacing:1px; }
+    .cta { display:inline-block; margin-top:10px; padding:8px 14px; border:1px solid #fff; text-decoration:none; color:#fff; transition:.2s; }
+    .cta:hover { background:#fff; color:#000; }
+  </style>
+</head>
+<body>
+  <div class="team-grid">
+    <div class="card">
+      <img src="assets/img/axe.png" onerror="this.src='assets/img/placeholder.png'">
+      <div class="name">AXE</div>
+      <a class="cta" href="#">Enter</a>
+    </div>
+    <div class="card">
+      <img src="assets/img/nyxx.png" onerror="this.src='assets/img/placeholder.png'">
+      <div class="name">NYXX</div>
+      <a class="cta" href="#">Enter</a>
+    </div>
+    <div class="card">
+      <img src="assets/img/torque.png" onerror="this.src='assets/img/placeholder.png'">
+      <div class="name">TORQUE</div>
+      <a class="cta" href="#">Enter</a>
+    </div>
+    <div class="card">
+      <img src="assets/img/kimi.png" onerror="this.src='assets/img/placeholder.png'">
+      <div class="name">KIMI</div>
+      <a class="cta" href="#">Enter</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+.logo-wrapper {
+  perspective: 1500px;
+}
+
+.logo-pick {
+  width: 220px;
+  max-width: 90vw;
+  opacity: 0;
+  transform: scale(0.1) rotateY(0deg);
+  filter: drop-shadow(0 0 0 white);
+  transition: filter 0.3s;
+}
+
+.slogan {
+  margin-top: 100px;
+  font-size: 2.2em;
+  color: white;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.word {
+  opacity: 0.1;
+  margin: 0 15px;
+  text-shadow: 0 0 0 #fff;
+  transition: text-shadow 0.3s, opacity 0.3s;
+}
+
+.enter-btn {
+  margin-top: 40px;
+  padding: 15px 50px;
+  font-size: 1.2em;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.6s ease;
+  box-shadow: 0 0 0px #fff;
+}
+
+.enter-btn:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 0 20px white;
+}
+
+.enter-btn.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px white; }
+  50% { box-shadow: 0 0 15px white; }
+  100% { box-shadow: 0 0 5px white; }
+}

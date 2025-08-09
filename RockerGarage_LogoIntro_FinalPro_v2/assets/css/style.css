@@ -1,0 +1,65 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+.logo-wrapper {
+  perspective: 1500px;
+}
+
+.logo-pick {
+  width: 150px;
+  max-width: 90vw;
+  opacity: 0;
+  transform: scale(0.2) rotateY(0deg);
+  filter: drop-shadow(0 0 0px white);
+  transition: filter 0.2s;
+}
+
+.slogan {
+  margin-top: 30px;
+  font-size: 2em;
+  color: white;
+  opacity: 0;
+}
+
+.word {
+  opacity: 0.1;
+  margin: 0 15px;
+  transition: text-shadow 0.3s, opacity 0.3s;
+}
+
+.enter-btn {
+  margin-top: 50px;
+  padding: 15px 50px;
+  font-size: 1.3em;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 0px white;
+}
+
+.enter-btn:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 0 20px white;
+}
