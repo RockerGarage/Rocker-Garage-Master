@@ -1,0 +1,329 @@
+
+### IDENTITY
+
+$ aws sts get-caller-identity
+{
+    "UserId": "902190101294",
+    "Account": "902190101294",
+    "Arn": "arn:aws:iam::902190101294:root"
+}
+
+### BUCKET LOCATION (global)
+
+$ aws s3api get-bucket-location --bucket rocker-garage-assets
+{
+    "LocationConstraint": "us-east-2"
+}
+
+### REGION: us-east-1 — Public Access + Policy + CORS
+
+$ aws s3control get-public-access-block --account-id 902190101294 --region us-east-1
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+    }
+}
+
+$ aws s3api get-public-access-block --bucket rocker-garage-assets --region us-east-1
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+    }
+}
+
+$ aws s3api get-bucket-policy-status --bucket rocker-garage-assets --region us-east-1
+{
+    "PolicyStatus": {
+        "IsPublic": true
+    }
+}
+
+$ aws s3api get-bucket-policy --bucket rocker-garage-assets --region us-east-1
+{
+    "Policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"AllowPublicReadUnderRGPrefix\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::rocker-garage-assets/rg/*\"}]}"
+}
+
+$ aws s3api get-bucket-cors --bucket rocker-garage-assets --region us-east-1
+{
+    "CORSRules": [
+        {
+            "AllowedHeaders": [
+                "*"
+            ],
+            "AllowedMethods": [
+                "GET",
+                "HEAD"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "ExposeHeaders": [
+                "ETag"
+            ],
+            "MaxAgeSeconds": 300
+        }
+    ]
+}
+
+### REGION: us-east-1 — HeadObject on the key paths we expect
+
+-- s3://rocker-garage-assets/rg/prod/build/index.html
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/index.html --region us-east-1
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T19:48:48+00:00",
+    "ContentLength": 1783,
+    "ETag": "\"d0e8f03009f8778a04776e40b186a681\"",
+    "VersionId": "FRR7bltFAMRepuk6Jq6NbMoVO5HZm4g9",
+    "CacheControl": "no-store",
+    "ContentType": "text/html",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+-- s3://rocker-garage-assets/rg/prod/build/styles.css
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/styles.css --region us-east-1
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T19:48:49+00:00",
+    "ContentLength": 2135,
+    "ETag": "\"19d426a087e764d85bf02e217f7e14c9\"",
+    "VersionId": "YDTK3KKRyeeTcXYbRP.K2kVJsA2gisP2",
+    "CacheControl": "public, max-age=31536000, immutable",
+    "ContentType": "text/css",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+-- s3://rocker-garage-assets/rg/prod/build/app.js
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/app.js --region us-east-1
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T19:48:49+00:00",
+    "ContentLength": 1773,
+    "ETag": "\"43bb802b1251aa9febdb722748500f31\"",
+    "VersionId": "OEQouxcUSLG8DhplBZ0sAQipTgANk1oL",
+    "CacheControl": "public, max-age=31536000, immutable",
+    "ContentType": "application/javascript",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+-- s3://rocker-garage-assets/rg/prod/build/team/index.html
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/team/index.html --region us-east-1
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T17:11:47+00:00",
+    "ContentLength": 4357,
+    "ETag": "\"fdbcd76a4515d387376d7b67c1952dd6\"",
+    "VersionId": "2VBwWQNMB3bk5jEOi9XGOU4F47XdgqkW",
+    "CacheControl": "public, max-age=3600",
+    "ContentType": "text/html",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+### REGION: us-east-2 — Public Access + Policy + CORS
+
+$ aws s3control get-public-access-block --account-id 902190101294 --region us-east-2
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+    }
+}
+
+$ aws s3api get-public-access-block --bucket rocker-garage-assets --region us-east-2
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": false,
+        "IgnorePublicAcls": false,
+        "BlockPublicPolicy": false,
+        "RestrictPublicBuckets": false
+    }
+}
+
+$ aws s3api get-bucket-policy-status --bucket rocker-garage-assets --region us-east-2
+{
+    "PolicyStatus": {
+        "IsPublic": true
+    }
+}
+
+$ aws s3api get-bucket-policy --bucket rocker-garage-assets --region us-east-2
+{
+    "Policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"AllowPublicReadUnderRGPrefix\",\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::rocker-garage-assets/rg/*\"}]}"
+}
+
+$ aws s3api get-bucket-cors --bucket rocker-garage-assets --region us-east-2
+{
+    "CORSRules": [
+        {
+            "AllowedHeaders": [
+                "*"
+            ],
+            "AllowedMethods": [
+                "GET",
+                "HEAD"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "ExposeHeaders": [
+                "ETag"
+            ],
+            "MaxAgeSeconds": 300
+        }
+    ]
+}
+
+### REGION: us-east-2 — HeadObject on the key paths we expect
+
+-- s3://rocker-garage-assets/rg/prod/build/index.html
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/index.html --region us-east-2
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T19:48:48+00:00",
+    "ContentLength": 1783,
+    "ETag": "\"d0e8f03009f8778a04776e40b186a681\"",
+    "VersionId": "FRR7bltFAMRepuk6Jq6NbMoVO5HZm4g9",
+    "CacheControl": "no-store",
+    "ContentType": "text/html",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+-- s3://rocker-garage-assets/rg/prod/build/styles.css
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/styles.css --region us-east-2
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T19:48:49+00:00",
+    "ContentLength": 2135,
+    "ETag": "\"19d426a087e764d85bf02e217f7e14c9\"",
+    "VersionId": "YDTK3KKRyeeTcXYbRP.K2kVJsA2gisP2",
+    "CacheControl": "public, max-age=31536000, immutable",
+    "ContentType": "text/css",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+-- s3://rocker-garage-assets/rg/prod/build/app.js
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/app.js --region us-east-2
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T19:48:49+00:00",
+    "ContentLength": 1773,
+    "ETag": "\"43bb802b1251aa9febdb722748500f31\"",
+    "VersionId": "OEQouxcUSLG8DhplBZ0sAQipTgANk1oL",
+    "CacheControl": "public, max-age=31536000, immutable",
+    "ContentType": "application/javascript",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+-- s3://rocker-garage-assets/rg/prod/build/team/index.html
+
+$ aws s3api head-object --bucket rocker-garage-assets --key rg/prod/build/team/index.html --region us-east-2
+{
+    "AcceptRanges": "bytes",
+    "LastModified": "2025-08-10T17:11:47+00:00",
+    "ContentLength": 4357,
+    "ETag": "\"fdbcd76a4515d387376d7b67c1952dd6\"",
+    "VersionId": "2VBwWQNMB3bk5jEOi9XGOU4F47XdgqkW",
+    "CacheControl": "public, max-age=3600",
+    "ContentType": "text/html",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+
+### PUBLIC URL HEAD checks
+
+-- https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/index.html
+
+$ curl -sI https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/index.html
+HTTP/1.1 200 OK
+x-amz-id-2: 6SKR/k1BqPjPl+wYkXloDyI14tiG428RgYXfrJufnAhaJBYvMObZwO4ahBXwEVe2Vy8sSc3OLCj9eKQKffT2p2ncmvMu6VsmsWIMVYrM/Nk=
+x-amz-request-id: NR7SN7M3C0AJZ57Y
+Date: Sun, 10 Aug 2025 19:51:38 GMT
+Last-Modified: Sun, 10 Aug 2025 19:48:48 GMT
+ETag: "d0e8f03009f8778a04776e40b186a681"
+x-amz-server-side-encryption: AES256
+Cache-Control: no-store
+x-amz-version-id: FRR7bltFAMRepuk6Jq6NbMoVO5HZm4g9
+Accept-Ranges: bytes
+Content-Type: text/html
+Content-Length: 1783
+Server: AmazonS3
+
+
+-- https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/styles.css
+
+$ curl -sI https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/styles.css
+HTTP/1.1 200 OK
+x-amz-id-2: ERZmjyYg3E+dPiXB+JijCrScuoxZ5Ez8b1/XfayPyNUJOvYuFKFUAe0mwErjBX6e886Td7CzNfU=
+x-amz-request-id: NR7Q9XDHFETF4SPH
+Date: Sun, 10 Aug 2025 19:51:38 GMT
+Last-Modified: Sun, 10 Aug 2025 19:48:49 GMT
+ETag: "19d426a087e764d85bf02e217f7e14c9"
+x-amz-server-side-encryption: AES256
+Cache-Control: public, max-age=31536000, immutable
+x-amz-version-id: YDTK3KKRyeeTcXYbRP.K2kVJsA2gisP2
+Accept-Ranges: bytes
+Content-Type: text/css
+Content-Length: 2135
+Server: AmazonS3
+
+
+-- https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/app.js
+
+$ curl -sI https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/app.js
+HTTP/1.1 200 OK
+x-amz-id-2: B7gdEyl2zEB4S8MTFZ3l0rWT1KQIFsCWsF7L+1+FGjOrHGorTNeXDvpNRIW0F3dO9MnUjHtLn1Jm0NbIJDoZRc1xX4cXWxTOU5vIBWulEFk=
+x-amz-request-id: NR7SH9JNZGP88QWC
+Date: Sun, 10 Aug 2025 19:51:38 GMT
+Last-Modified: Sun, 10 Aug 2025 19:48:49 GMT
+ETag: "43bb802b1251aa9febdb722748500f31"
+x-amz-server-side-encryption: AES256
+Cache-Control: public, max-age=31536000, immutable
+x-amz-version-id: OEQouxcUSLG8DhplBZ0sAQipTgANk1oL
+Accept-Ranges: bytes
+Content-Type: application/javascript
+Content-Length: 1773
+Server: AmazonS3
+
+
+-- https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/team/index.html
+
+$ curl -sI https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/team/index.html
+HTTP/1.1 200 OK
+x-amz-id-2: 6YPivS3MotSE/RNyQzae6jWu25+u2eCVkQq2nb2y7myVWI7/RMoOiqHwhNcz4C53AmI1CORiA08=
+x-amz-request-id: NR7YPT7CEN4VKY8K
+Date: Sun, 10 Aug 2025 19:51:38 GMT
+Last-Modified: Sun, 10 Aug 2025 17:11:47 GMT
+ETag: "fdbcd76a4515d387376d7b67c1952dd6"
+x-amz-server-side-encryption: AES256
+Cache-Control: public, max-age=3600
+x-amz-version-id: 2VBwWQNMB3bk5jEOi9XGOU4F47XdgqkW
+Accept-Ranges: bytes
+Content-Type: text/html
+Content-Length: 4357
+Server: AmazonS3
+
+
+### DONE
+Output saved to: RG_S3_Diag_2025-08-10_1951Z.txt

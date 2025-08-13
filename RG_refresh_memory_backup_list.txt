@@ -1,0 +1,25 @@
+==============================
+ROCKER GARAGE REFRESH MEMORY BACKUP LIST
+==============================
+
+A) Update S3 via CloudShell (deploy homepage with audio)
+- Greg’s: Open AWS CloudShell in `us-east-1`.
+- Greg’s: Upload the two MP3s (`rg_audio_v8_rev_v1.mp3`, `rg_audio_amp_hum_v2.mp3`) to CloudShell.
+- Greg’s: Run from toolkit ZIP: convert MP3s to OGG, upload to `/upload/audio/`, confirm playback, then promote to `/prod/audio/`.
+- RG-GPT: Once promoted, mark Homepage → Audio sync: ✅ and update homepage HTML if needed.
+
+B) Homepage QA & Final Lock
+- RG-GPT: Validate audio file metadata, gesture-start behavior, broken links, and file size compliance.
+- Greg’s: Approve final homepage package so it can be frozen before moving to Team Page.
+
+C) Team Page Animation
+- RG-GPT: Build hover tilt/parallax, idle “breathe” loop, and bio reveal on click for avatars.
+- Greg’s: Provide any new images or confirm use of current canon avatars.
+
+D) Rocker Recollection Base
+- RG-GPT: Prepare base HTML/JS/CSS layout with fullscreen visuals + audio playlist support.
+- Greg’s: Choose first tribute subject and supply media assets.
+
+E) Backups & Logs
+- Greg’s: Keep `RG_Latest.zip` in `/upload` after each major change.
+- RG-GPT: Keep validation logs and toolkits synced with latest assets.

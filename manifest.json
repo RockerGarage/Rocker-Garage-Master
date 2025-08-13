@@ -1,0 +1,121 @@
+[
+  {
+    "original_path": "Nyxx_text_v1.png",
+    "new_key": "exports/images/nyxx-text-v1.png",
+    "bytes": 28572,
+    "sha256_12": "98916c4b3719",
+    "ext": ".png"
+  },
+  {
+    "original_path": "KIMI_V1.png",
+    "new_key": "exports/images/kimi-v1.png",
+    "bytes": 491201,
+    "sha256_12": "ae2930a05b98",
+    "ext": ".png"
+  },
+  {
+    "original_path": "Kimi_text_v1.png",
+    "new_key": "exports/images/kimi-text-v1.png",
+    "bytes": 27358,
+    "sha256_12": "640c2f1081f8",
+    "ext": ".png"
+  },
+  {
+    "original_path": "AXE_V1.png",
+    "new_key": "exports/images/axe-v1.png",
+    "bytes": 617187,
+    "sha256_12": "008dad05e0cd",
+    "ext": ".png"
+  },
+  {
+    "original_path": "Axe_text_v1.png",
+    "new_key": "exports/images/axe-text-v1.png",
+    "bytes": 32067,
+    "sha256_12": "536bd210a2c5",
+    "ext": ".png"
+  },
+  {
+    "original_path": "67 Mustang Layer_overlay_v1.png",
+    "new_key": "exports/images/67-mustang-layer-overlay-v1.png",
+    "bytes": 863233,
+    "sha256_12": "40a353fb36d8",
+    "ext": ".png"
+  },
+  {
+    "original_path": "TORQUE_V1.png",
+    "new_key": "exports/images/torque-v1.png",
+    "bytes": 553888,
+    "sha256_12": "95ec5ccbef88",
+    "ext": ".png"
+  },
+  {
+    "original_path": "Torque_text_v1.png",
+    "new_key": "exports/images/torque-text-v1.png",
+    "bytes": 39555,
+    "sha256_12": "4c68d872a72c",
+    "ext": ".png"
+  },
+  {
+    "original_path": "Rocker Garage Logo_topleft_v1.png",
+    "new_key": "exports/images/rocker-garage-logo-topleft-v1.png",
+    "bytes": 53420,
+    "sha256_12": "724228ca2cb0",
+    "ext": ".png"
+  },
+  {
+    "original_path": "RG_logo_LR_v1.png",
+    "new_key": "exports/images/rg-logo-lr-v1.png",
+    "bytes": 13087,
+    "sha256_12": "4bb3121e04db",
+    "ext": ".png"
+  },
+  {
+    "original_path": "RG TEAM TEXT_V1.png",
+    "new_key": "exports/images/rg-team-text-v1.png",
+    "bytes": 184961,
+    "sha256_12": "bad1067694e9",
+    "ext": ".png"
+  },
+  {
+    "original_path": "RG TEAM PAGE MG_MUSTANG_V1.png",
+    "new_key": "exports/images/rg-team-page-mg-mustang-v1.png",
+    "bytes": 881486,
+    "sha256_12": "33fe5bb4f15d",
+    "ext": ".png"
+  },
+  {
+    "original_path": "RG TEAM PAGE LAYERS V1.psd",
+    "new_key": "layers/source/rg-team-page-layers-v1.psd",
+    "bytes": 22034731,
+    "sha256_12": "1d722d0fb104",
+    "ext": ".psd"
+  },
+  {
+    "original_path": "RG TEAM PAGE FG_LOGO_V1.png",
+    "new_key": "exports/images/rg-team-page-fg-logo-v1.png",
+    "bytes": 76065,
+    "sha256_12": "51ea2bf2e717",
+    "ext": ".png"
+  },
+  {
+    "original_path": "RG TEAM PAGE BG_V1.png",
+    "new_key": "exports/images/rg-team-page-bg-v1.png",
+    "bytes": 1596006,
+    "sha256_12": "e0f74d9e6839",
+    "ext": ".png"
+  },
+  {
+    "original_path": "RG TEAM CAR_BG_V1.png",
+    "new_key": "exports/images/rg-team-car-bg-v1.png",
+    "bytes": 1293083,
+    "sha256_12": "4905be2f75be",
+    "ext": ".png"
+  },
+  {
+    "original_path": "NYXX_V1.png",
+    "new_key": "exports/images/nyxx-v1.png",
+    "bytes": 620069,
+    "sha256_12": "0ca3207f9a17",
+    "ext": ".png"
+  }
+]

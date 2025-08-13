@@ -1,0 +1,118 @@
+==============================
+ROCKER GARAGE — TOTAL RECALL
+==============================
+Date: 2025-08-10 17:31:25Z
+
+SCOPE
+- Single-page snapshot of what’s live, where things are, and who owns what.
+- Owner tags: Greg’s (user) • RG-GPT (assistant). Keep these EXACT labels in all punch-lists.
+
+AWS / REGION / ACCESS
+- Bucket: rocker-garage-assets
+- Primary Prefix: rg
+- Default Region: us-east-1 (always pass --region us-east-1 when unsure)
+- Public Access: Allowed under s3://rocker-garage-assets/rg/*
+- CORS: GET, HEAD from all origins
+- CloudShell quick set:
+    export AWS_REGION=us-east-1
+    export AWS_DEFAULT_REGION=us-east-1
+    export BUCKET=rocker-garage-assets
+    export PREFIX=rg
+
+S3 LAYOUT (canonical)
+s3://rocker-garage-assets/
+└── rg/
+    ├── prod/     (live)
+    │   ├── img/     (final images)
+    │   ├── audio/   (final OGG + MP3)
+    │   ├── video/   (final MP4/webm)
+    │   ├── fonts/   (web fonts)
+    │   └── build/   (compiled HTML/CSS/JS)
+    ├── upload/   (staging)
+    ├── staging/  (work-in-progress assets)
+    ├── archive/  (retired/old assets)
+    └── meta/     (readme, docs)
+
+CANON ASSETS (current highlights)
+- Logos: WEB_PICK_LOGO_GLOW.png, MUSIC.MOTORS.BREW.copy.png (prod/img)
+- Backgrounds: RG_HOME_PAGE_BACKGROUNDV6.1.png, HEADLIGHT_LAYER.png (prod/img)
+- Avatars: AXE_V1.png, NYXX_V1.png, TORQUE_V1.png, KIMI_V1.png (prod/img)
+- Audio (target): rg_audio_v8_rev_v1.(mp3|ogg), rg_audio_amp_hum_v2.(mp3|ogg) (prod/audio)
+
+LIVE STATUS (as of 2025-08-10)
+- Homepage
+  • Logo animation + glow: ✅
+  • Headlight flicker: ✅
+  • Audio sync (needs OGGs in prod/audio): ⏳
+- Team Page
+  • Animation module (tilt, breathe, bio): ✅ LIVE
+    URL: https://rocker-garage-assets.s3.amazonaws.com/rg/prod/build/team/index.html
+- Other
+  • Financing page (WordPress Avada): Draft concept
+
+CRITICAL NAMING RULE
+- All critical downloads must include the date in the filename.
+  Pattern: <slug>_<YYYY-MM-DD>.<ext>
+  Examples: Team_Page_Module_2025-08-10.zip  • rg_audio_v8_rev_v1_2025-08-10.ogg
+
+TODAY’S PUNCH-LIST (owners noted)
+A) Update S3 via CloudShell (deploy homepage audio)
+- Greg’s: Upload `rg_audio_v8_rev_v1.mp3` and `rg_audio_amp_hum_v2.mp3` into CloudShell (or place them in ./audio).
+- Greg’s: Convert MP3 → OGG (Vorbis q=5).
+- Greg’s: Stage OGGs to /upload/audio and promote to /prod/audio.
+- RG-GPT: When promoted, mark Homepage → Audio sync: ✅ and recheck the HTML snippet + gesture-start.
+
+B) Homepage QA & Final Lock
+- RG-GPT: Validate Content-Type/Cache-Control, gesture-start, 404s, and file-size rule (>1.1222KB).
+- Greg’s: Approve the final homepage package so we can lock and move on.
+
+C) Team Page Animation
+- RG-GPT: Delivered module (✅). Wire-in instructions pending main-site integration.
+- Greg’s: Confirm canon avatars or provide new images (optional).
+
+D) Rocker Recollection Base
+- RG-GPT: Build fullscreen tribute skeleton (HTML/JS/CSS + playlist support).
+- Greg’s: Pick first tribute subject and supply media.
+
+E) Backups & Logs
+- Greg’s: Keep RG_Latest_2025-08-10.zip in /upload after each major change.
+- RG-GPT: Keep validation logs + toolkits synced with latest assets.
+
+COPY/PASTE COMMANDS (CloudShell, us-east-1)
+
+1) Convert MP3 → OGG (if needed)
+    chmod +x rg_audio_convert.sh || true
+    ./rg_audio_convert.sh ./audio rg_audio_v8_rev_v1.mp3 rg_audio_amp_hum_v2.mp3
+
+2) Stage OGGs to /upload/audio
+    aws s3 cp ./audio/ s3://$BUCKET/$PREFIX/upload/audio/       --recursive --exclude "*" --include "*.ogg"       --content-type audio/ogg --cache-control "public, max-age=31536000, immutable"       --region us-east-1
+
+3) Promote to /prod/audio
+    aws s3 sync s3://$BUCKET/$PREFIX/upload/audio/ s3://$BUCKET/$PREFIX/prod/audio/ --region us-east-1
+
+4) Test URLs
+    https://rocker-garage-assets.s3.amazonaws.com/rg/prod/audio/rg_audio_v8_rev_v1.ogg
+    https://rocker-garage-assets.s3.amazonaws.com/rg/prod/audio/rg_audio_amp_hum_v2.ogg
+
+HOMEPAGE AUDIO SNIPPET (final form)
+    <audio id="rg-intro" preload="auto" loop>
+      <source src="https://rocker-garage-assets.s3.amazonaws.com/rg/prod/audio/rg_audio_v8_rev_v1.ogg" type="audio/ogg">
+      <source src="https://rocker-garage-assets.s3.amazonaws.com/rg/prod/audio/rg_audio_v8_rev_v1.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+      (function(){
+        const a = document.getElementById('rg-intro'); let started=false;
+        function go(){ if(started) return; started=true; a.volume=0.6; a.play().catch(()=>{}); }
+        ['pointerdown','keydown','touchstart'].forEach(e=>window.addEventListener(e,go,{once:true}));
+        document.addEventListener('visibilitychange',()=>{ if(document.hidden) a.pause(); else if(started) a.play().catch(()=>{}); });
+      })();
+    </script>
+
+VERIFICATION CHECKS (quick)
+- Open devtools → Network → reload → confirm 200s for all assets, correct MIME types.
+- Click/hover team cards: tilt → breathe loop → bio panel open/close (Esc works).
+- iOS/Android: audio starts after tap; page pauses on background.
+
+NOTES
+- Greg is an extreme novice in web dev; all instructions must be beginner-safe with copy/paste.
+- Keep every deliverable free of placeholders; pass the >1.1222KB rule; verify PNG signatures; no broken links.

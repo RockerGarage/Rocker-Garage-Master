@@ -1,0 +1,19 @@
+Rocker Garage Validation Log
+Run at: 2025-08-10T13:01:33.698269Z
+Scan root: /mnt/data
+Rules: no file < 1.1222KB (1149 bytes); PNGs must have valid signature; list audio/video/doc assets.
+
+=== SIZE CHECK (< 1.1222KB) ===
+✅ No files below 1.1222KB threshold found.
+
+=== PNG SIGNATURE CHECK ===
+ℹ️ No PNGs found.
+
+=== AUDIO FILES DETECTED ===
+ℹ️ No MP3/OGG/WAV files present in this workspace.
+
+=== VIDEO FILES DETECTED ===
+ℹ️ No MP4/WEBM/MOV files present in this workspace.
+
+=== HTML FILES DETECTED ===
+ℹ️ No HTML files present in this workspace.
